@@ -1,0 +1,7 @@
+.weather{
+    width: 400px;
+    height: 500px;
+    border: 1px solid black;
+    display: inline-block;
+    margin: 10px;
+}
