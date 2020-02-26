@@ -1,5 +1,5 @@
 import React from 'react';
-import './WeatherDisplay.css';
+import './WeatherDisplay.scss';
 
 
 
@@ -13,12 +13,16 @@ class WeatherDisplay extends React.Component {
 
     componentDidMount() {
         const zip = this.props.zip;
-        const nameInput = this.props.nameInput;
+        // const URL = "http://api.openweathermap.org/data/2.5/forecast?q=" +
+        //     zip +
+        //     "&appid=b1b35bba8b434a28a0be2a3e1071ae5b&units=metric";
         const URL = "http://api.openweathermap.org/data/2.5/weather?q=" +
             zip +
             "&appid=b1b35bba8b434a28a0be2a3e1071ae5b&units=metric";
         fetch(URL).then(res => res.json()).then(json => {
             this.setState({ weatherData: json });
+        }).catch(err=>{
+            console.log(err);
         });
     }
 

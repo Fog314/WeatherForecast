@@ -1,0 +1,174 @@
+.App {
+    display: grid;
+    grid-template-areas: "header header"
+        "currentWeather currentWeather"
+        "currentWeather currentWeather"
+        "footer footer";
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1.5fr 5fr 5fr 2fr;
+
+    // ////////////////////////////////////////////////////grid-gap: 50px;
+
+    height: 100%;
+    font-size: 150%;
+    font-family: 'Roboto';
+}
+
+.header {
+    grid-area: header;
+    background: #ff3593;
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+
+    h1 {
+        font-size: 180%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        color: white;
+    }
+
+    transition: all 0.5s;
+}
+
+.App nav {
+    grid-area: nav;
+}
+
+.App .currentWeather {
+    text-align: center;
+    grid-area: currentWeather;
+    display: grid;
+    grid-template-areas: 'cityNav'
+        'weatherInfo';
+    grid-template-columns: 100%;
+    height: 100%;
+    width: 100%;
+    border-width: 15px 55px 15px 15px;
+
+    .weatherInfo {
+        grid-area: weatherInfo;
+    }
+
+    .cityNav {
+        grid-area: cityNav;
+    }
+
+    .deleteButton {
+        box-shadow: none;
+        width: 200px;
+        background: #FF1800;
+
+        &:hover {
+            box-shadow: 1px 1px 5px #FF1800;
+        }
+    }
+
+    button {
+        font-size: 120%;
+        border: none;
+        max-width: 250px;
+        width: auto;
+        height: 50px;
+        margin: 5px;
+        background: #1808fb;
+        box-shadow: 1px 1px 5px #1808fb;
+        color: white;
+        font-family: 'Roboto';
+
+        &:focus,
+        &:active {
+            outline: none;
+            background: #10069e;
+        }
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    form {
+        input[type=submit] {
+            border: none;
+            width: 200px;
+            height: auto;
+            background: #00C12B;
+            color: white;
+            padding: 10px;
+
+            &:hover {
+                opacity: 0.7;
+            }
+
+            &:active,
+            &:focus {
+                outline: none;
+                background: rgb(1, 161, 36);
+            }
+        }
+
+        input {
+            border: 5px solid black;
+            box-shadow: 1px 1px 1px;
+            width: 50%;
+            height: auto;
+            font-size: 100%;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        input[type=text] {
+
+            &:active,
+            &:focus {
+                box-shadow: 1px 1px 5px;
+            }
+        }
+    }
+}
+
+.App footer {
+    grid-area: footer;
+}
+
+.fade {
+    background: red;
+}
+
+@media(min-width: 800px) {
+    .header {
+        height: 80px;
+    }
+
+    .App .currentWeather button {
+        width: 250px;
+    }
+}
+
+@media(min-width: 1000px) {
+    .App {
+        grid-gap: 50px;
+    }
+
+    .App .currentWeather {
+        grid-template-areas: 'weatherInfo cityNav';
+        grid-template-columns: 70% 30%;
+    }
+}
+
+@media(min-width: 1200px){
+    .App .currentWeather{
+        text-align: left;
+        margin: auto;
+        width: 65%;
+        padding: 50px;
+        border: 10px solid black;
+        border-width: 10px 50px 10px 10px;
+    }
+    .header{
+        height: 100px;
+    }
+}
