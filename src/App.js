@@ -4,7 +4,9 @@ import WeatherDisplay from './WeatherDisplay.js';
 
 
 let PLACES = [];
-let CLR = ['#ff3593','#0ACF00','#FD0006','#e135ff','#3543ff'];
+console.log(PLACES);
+let CLR = ['#FF1800','#1808fb','#00C12B','black'];
+let FRCST=['current','daily'];
 for (let i = 0; i < localStorage.length; i++) {
     let key = localStorage.key(i);
     PLACES.push({
@@ -21,6 +23,7 @@ class App extends React.Component {
                     value: '',
                     color: '',
                     transform: '',
+                    current: '0',
                 };
                 }
 
@@ -46,7 +49,7 @@ class App extends React.Component {
                             value: ''
                         });
                     }
-
+                    console.log(PLACES);
                     event.preventDefault();
                 }
 
@@ -91,7 +94,7 @@ class App extends React.Component {
                         i++;
                         this.setState({ color: CLR[i] });
                         console.log(i);
-                        if ( i === 5 ) {
+                        if ( i === 4 ) {
                         i = 0;   
                         }
                         }.bind(this),5000);
@@ -115,6 +118,7 @@ class App extends React.Component {
                 <WeatherDisplay
                 key={activePlace}
                 zip={PLACES[activePlace].zip}
+                forecast={FRCST[this.state.current]}
                 />
                 <button onClick={this.handleDelete.bind(this)} className="deleteButton">Delete</button>
                 </div>
@@ -131,6 +135,13 @@ class App extends React.Component {
                 </button>
                 ))}
                 </div>
+                </div>
+                <div className="dailyForecast">
+                <WeatherDisplay
+                key={activePlace}
+                zip={PLACES[activePlace].zip}
+                forecast={FRCST[1]}
+                />
                 </div>
                 <footer>
                 </footer>
